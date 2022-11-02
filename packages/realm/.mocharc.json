@@ -1,7 +1,10 @@
 {
-  "loader": "tsm",
-  "enable-source-maps": true,
-  "no-warnings": true,
+  "node-option": [
+    "loader=tsm",
+    "no-warnings",
+    "expose-gc",
+    "enable-source-maps"
+  ],
   "require": "src/node/index.ts",
   "spec": "src/tests/*.test.ts"
 }
