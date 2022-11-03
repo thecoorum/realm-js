@@ -4,8 +4,7 @@
 * None
 
 ### Fixed
-* <How to hit and notice issue? what was the impact?> ([#????](https://github.com/realm/realm-js/issues/????), since v?.?.?)
-* None
+* After introducing class-based models, we don't need to manipulate `Reflect.construct`. ([#5055](https://github.com/realm/realm-js/issues/5055), since v11.0.0)
 
 ### Compatibility
 * React Native >= v0.70.0
