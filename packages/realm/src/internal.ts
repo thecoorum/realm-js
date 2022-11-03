@@ -39,6 +39,10 @@ export * from "./Listeners";
 export * from "./JSONCacheMap";
 /** @internal */
 export * from "./TimeoutPromise";
+/** @internal */
+export * from "./IndirectWeakMap";
+/** @internal */
+export * from "./WeakCache";
 
 /** @internal */
 export * from "./PropertyHelpers";

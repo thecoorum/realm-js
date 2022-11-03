@@ -19,6 +19,7 @@
 import {
   Credentials,
   EmailPasswordAuthClient,
+  IndirectWeakMap,
   Listeners,
   Sync,
   User,
@@ -35,8 +36,7 @@ export type AppConfiguration = {
 
 export type AppChangeCallback = () => void;
 
-// TODO: Ensure this doesn't leak
-const appByUserId = new Map<string, App>();
+const appByUser = new IndirectWeakMap<binding.SyncUser, App, string>(({ identity }) => identity);
 
 export class App {
   // TODO: Ensure these are injected by the platform
@@ -53,7 +53,7 @@ export class App {
 
   /** @internal */
   public static get(userInternal: binding.SyncUser) {
-    const app = appByUserId.get(userInternal.identity);
+    const app = appByUser.get(userInternal);
     if (!app) {
       throw new Error(`Cannot determine which app is associated with user (id = ${userInternal.identity})`);
     }
@@ -104,7 +104,7 @@ export class App {
 
   public async logIn(credentials: Credentials) {
     const userInternal = await this.internal.logInWithCredentials(credentials.internal);
-    appByUserId.set(userInternal.identity, this);
+    appByUser.set(userInternal, this);
     return new User(userInternal, this);
   }
 
