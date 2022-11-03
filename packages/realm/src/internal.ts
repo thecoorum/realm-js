@@ -42,7 +42,7 @@ export * from "./TimeoutPromise";
 /** @internal */
 export * from "./IndirectWeakMap";
 /** @internal */
-export * from "./WeakCache";
+export * from "./IndirectWeakCache";
 
 /** @internal */
 export * from "./PropertyHelpers";
